@@ -54,7 +54,7 @@ An AI-powered web application designed to support farmers with intelligent insig
 
 1. **Clone the repo:**
    ```bash
-   git clone https://github.com/your-username/smart-farming-ai.git
+   git clone https://github.com/padmakanth53/Smart-Farming-AI-Assistant.git
    cd smart-farming-ai
 
  
