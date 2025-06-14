@@ -42,9 +42,10 @@ An AI-powered web application designed to support farmers with intelligent insig
 - **Weather API**: OpenWeatherMap
 - **Optional Database**: SQLAlchemy 
 
----![image](https://github.com/user-attachments/assets/9445742a-5986-4003-bcc1-036baa2a597a)
+
   ![image](https://github.com/user-attachments/assets/f5a8fe89-a77d-4402-8940-e7ee3153595c)
-   ![image](https://github.com/user-attachments/assets/8c319c05-7bbb-4354-820f-bfe204c20631)
+  ![image](https://github.com/user-attachments/assets/9445742a-5986-4003-bcc1-036baa2a597a)
+  
 
 
 
