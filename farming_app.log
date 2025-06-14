@@ -1,0 +1,189 @@
+2025-06-14 17:13:42,820 - __main__ - ERROR - Missing packages: pillow, opencv-python
+2025-06-14 17:13:42,820 - __main__ - ERROR - Please install them using: pip install pillow opencv-python
+2025-06-14 17:50:26,650 - weather - INFO - Weather service initialized with API key
+2025-06-14 17:50:26,659 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 17:50:28,435 - main - INFO - CNN model architecture defined.
+2025-06-14 17:50:28,435 - main - INFO - Dummy soil analysis model loaded/created.
+2025-06-14 17:50:28,464 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.111.67:5000
+2025-06-14 17:50:28,464 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-14 17:50:28,466 - werkzeug - INFO -  * Restarting with stat
+2025-06-14 17:50:33,437 - weather - INFO - Weather service initialized with API key
+2025-06-14 17:50:33,447 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 17:50:34,111 - main - INFO - CNN model architecture defined.
+2025-06-14 17:50:34,111 - main - INFO - Dummy soil analysis model loaded/created.
+2025-06-14 17:50:34,122 - werkzeug - WARNING -  * Debugger is active!
+2025-06-14 17:50:34,125 - werkzeug - INFO -  * Debugger PIN: 736-176-579
+2025-06-14 17:50:34,564 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 17:50:34] "GET / HTTP/1.1" 200 -
+2025-06-14 17:50:34,670 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 17:50:34] "[33mGET /api/weather?location=Hyderabad,%20Telangana,%20IN HTTP/1.1[0m" 404 -
+2025-06-14 17:50:34,676 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 17:50:34] "[33mGET /api/agri-supplies HTTP/1.1[0m" 404 -
+2025-06-14 17:50:47,392 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 17:50:47] "[33mPOST /api/soil-analysis HTTP/1.1[0m" 404 -
+2025-06-14 17:51:07,584 - werkzeug - INFO -  * Detected change in 'C:\\Users\\vuyyu\\OneDrive\\Desktop\\3-2 SUBJECTS\\CRT\\code\\soil_analysis_ai\\app.py', reloading
+2025-06-14 17:51:09,688 - werkzeug - INFO -  * Restarting with stat
+2025-06-14 18:12:29,372 - werkzeug - INFO -  * Restarting with stat
+2025-06-14 18:12:37,488 - __main__ - ERROR - Missing Python packages: Pillow, opencv-python, SpeechRecognition
+2025-06-14 18:12:37,489 - __main__ - ERROR - Please install them using: pip install -r requirements.txt
+2025-06-14 18:42:01,235 - weather - INFO - Weather service initialized with API key
+2025-06-14 18:42:01,255 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 18:42:03,074 - main - INFO - CNN model architecture defined.
+2025-06-14 18:42:03,074 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 18:42:03,090 - werkzeug - WARNING -  * Debugger is active!
+2025-06-14 18:42:03,093 - werkzeug - INFO -  * Debugger PIN: 736-176-579
+2025-06-14 18:42:03,529 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 18:42:03] "GET / HTTP/1.1" 200 -
+2025-06-14 18:42:03,676 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 18:42:03] "[33mGET /api/weather?location=Hyderabad,%20Telangana,%20IN HTTP/1.1[0m" 404 -
+2025-06-14 18:42:03,680 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 18:42:03] "[33mGET /api/agri-supplies HTTP/1.1[0m" 404 -
+2025-06-14 18:42:19,021 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 18:42:19] "[33mPOST /api/voice-query HTTP/1.1[0m" 404 -
+2025-06-14 18:42:27,766 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 18:42:27] "[33mPOST /api/voice-query HTTP/1.1[0m" 404 -
+2025-06-14 18:42:51,497 - werkzeug - INFO -  * Detected change in 'C:\\Users\\vuyyu\\OneDrive\\Desktop\\3-2 SUBJECTS\\CRT\\code\\soil_analysis_ai\\app.py', reloading
+2025-06-14 18:46:43,628 - weather - INFO - Weather service initialized with API key
+2025-06-14 18:46:43,640 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 18:46:45,460 - main - INFO - CNN model architecture defined.
+2025-06-14 18:46:45,460 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 18:46:45,486 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.111.67:5000
+2025-06-14 18:46:45,486 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-14 18:46:45,487 - werkzeug - INFO -  * Restarting with stat
+2025-06-14 18:46:49,105 - weather - INFO - Weather service initialized with API key
+2025-06-14 18:46:49,114 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 18:46:49,735 - main - INFO - CNN model architecture defined.
+2025-06-14 18:46:49,735 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 18:46:49,746 - werkzeug - WARNING -  * Debugger is active!
+2025-06-14 18:46:49,748 - werkzeug - INFO -  * Debugger PIN: 736-176-579
+2025-06-14 18:46:59,794 - werkzeug - INFO -  * Detected change in 'C:\\Users\\vuyyu\\OneDrive\\Desktop\\3-2 SUBJECTS\\CRT\\code\\soil_analysis_ai\\app.py', reloading
+2025-06-14 18:47:01,802 - werkzeug - INFO -  * Restarting with stat
+2025-06-14 18:47:06,444 - weather - INFO - Weather service initialized with API key
+2025-06-14 18:47:06,454 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 18:47:07,081 - main - INFO - CNN model architecture defined.
+2025-06-14 18:47:07,081 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 18:47:07,095 - werkzeug - WARNING -  * Debugger is active!
+2025-06-14 18:47:07,097 - werkzeug - INFO -  * Debugger PIN: 736-176-579
+2025-06-14 18:47:07,398 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 18:47:07] "[33mGET /api/weather?location=Hyderabad,%20Telangana,%20IN HTTP/1.1[0m" 404 -
+2025-06-14 18:47:24,527 - weather - INFO - Weather service initialized with API key
+2025-06-14 18:47:24,535 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 18:47:25,150 - main - INFO - CNN model architecture defined.
+2025-06-14 18:47:25,150 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 18:47:25,172 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.111.67:5000
+2025-06-14 18:47:25,172 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-14 18:47:25,174 - werkzeug - INFO -  * Restarting with stat
+2025-06-14 18:47:28,583 - weather - INFO - Weather service initialized with API key
+2025-06-14 18:47:28,594 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 18:47:29,271 - main - INFO - CNN model architecture defined.
+2025-06-14 18:47:29,271 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 18:47:29,283 - werkzeug - WARNING -  * Debugger is active!
+2025-06-14 18:47:29,285 - werkzeug - INFO -  * Debugger PIN: 736-176-579
+2025-06-14 18:47:29,605 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 18:47:29] "GET / HTTP/1.1" 200 -
+2025-06-14 18:47:29,779 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 18:47:29] "[33mGET /api/weather?location=Hyderabad,%20Telangana,%20IN HTTP/1.1[0m" 404 -
+2025-06-14 18:47:29,786 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 18:47:29] "[33mGET /api/agri-supplies HTTP/1.1[0m" 404 -
+2025-06-14 18:48:57,390 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 18:48:57] "[33mPOST /api/voice-query HTTP/1.1[0m" 404 -
+2025-06-14 18:53:51,307 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 18:53:51] "[33mGET /api/weather?location=Hyderabad,%20Telangana,%20IN HTTP/1.1[0m" 404 -
+2025-06-14 18:58:51,314 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 18:58:51] "[33mGET /api/weather?location=Hyderabad,%20Telangana,%20IN HTTP/1.1[0m" 404 -
+2025-06-14 19:03:51,311 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 19:03:51] "[33mGET /api/weather?location=Hyderabad,%20Telangana,%20IN HTTP/1.1[0m" 404 -
+2025-06-14 19:06:21,114 - werkzeug - INFO -  * Detected change in 'C:\\Users\\vuyyu\\OneDrive\\Desktop\\3-2 SUBJECTS\\CRT\\code\\soil_analysis_ai\\app.py', reloading
+2025-06-14 19:06:23,998 - werkzeug - INFO -  * Restarting with stat
+2025-06-14 19:06:33,563 - weather - INFO - Weather service initialized with API key
+2025-06-14 19:06:33,584 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 19:06:34,434 - main - INFO - CNN model architecture defined.
+2025-06-14 19:06:34,434 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 19:06:55,828 - weather - INFO - Weather service initialized with API key
+2025-06-14 19:06:55,838 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 19:06:57,465 - main - INFO - CNN model architecture defined.
+2025-06-14 19:06:57,465 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 19:07:16,164 - weather - INFO - Weather service initialized with API key
+2025-06-14 19:07:16,174 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 19:07:17,830 - main - INFO - CNN model architecture defined.
+2025-06-14 19:07:17,830 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 19:07:17,874 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.111.67:5000
+2025-06-14 19:07:17,874 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-14 19:07:17,876 - werkzeug - INFO -  * Restarting with stat
+2025-06-14 19:07:21,804 - weather - INFO - Weather service initialized with API key
+2025-06-14 19:07:21,814 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 19:07:22,460 - main - INFO - CNN model architecture defined.
+2025-06-14 19:07:22,460 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 19:07:22,474 - werkzeug - WARNING -  * Debugger is active!
+2025-06-14 19:07:22,478 - werkzeug - INFO -  * Debugger PIN: 736-176-579
+2025-06-14 19:08:51,626 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 19:08:51] "[33mGET /api/weather?location=Hyderabad,%20Telangana,%20IN HTTP/1.1[0m" 404 -
+2025-06-14 19:09:09,055 - werkzeug - INFO -  * Detected change in 'C:\\Users\\vuyyu\\OneDrive\\Desktop\\3-2 SUBJECTS\\CRT\\code\\soil_analysis_ai\\app.py', reloading
+2025-06-14 19:09:11,214 - werkzeug - INFO -  * Restarting with stat
+2025-06-14 19:10:04,522 - weather - INFO - Weather service initialized with API key
+2025-06-14 19:10:04,533 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 19:10:06,316 - main - INFO - CNN model architecture defined.
+2025-06-14 19:10:06,316 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 19:10:06,357 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.111.67:5000
+2025-06-14 19:10:06,357 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-14 19:10:06,360 - werkzeug - INFO -  * Restarting with stat
+2025-06-14 19:10:11,326 - weather - INFO - Weather service initialized with API key
+2025-06-14 19:10:11,338 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 19:10:12,017 - main - INFO - CNN model architecture defined.
+2025-06-14 19:10:12,017 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 19:10:12,030 - werkzeug - WARNING -  * Debugger is active!
+2025-06-14 19:10:12,032 - werkzeug - INFO -  * Debugger PIN: 736-176-579
+2025-06-14 19:10:41,527 - werkzeug - INFO -  * Detected change in 'C:\\Users\\vuyyu\\OneDrive\\Desktop\\3-2 SUBJECTS\\CRT\\code\\soil_analysis_ai\\app.py', reloading
+2025-06-14 19:10:43,609 - werkzeug - INFO -  * Restarting with stat
+2025-06-14 19:10:48,970 - weather - INFO - Weather service initialized with API key
+2025-06-14 19:10:48,979 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 19:10:49,630 - main - INFO - CNN model architecture defined.
+2025-06-14 19:10:49,630 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 19:10:49,645 - werkzeug - WARNING -  * Debugger is active!
+2025-06-14 19:10:49,648 - werkzeug - INFO -  * Debugger PIN: 736-176-579
+2025-06-14 19:10:54,645 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 19:10:54] "GET / HTTP/1.1" 200 -
+2025-06-14 19:10:54,895 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 19:10:54] "[33mGET /api/weather?location=Hyderabad,%20Telangana,%20IN HTTP/1.1[0m" 404 -
+2025-06-14 19:10:54,914 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 19:10:54] "[33mGET /api/agri-supplies HTTP/1.1[0m" 404 -
+2025-06-14 19:11:02,377 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 19:11:02] "[33mPOST /api/voice-query HTTP/1.1[0m" 404 -
+2025-06-14 19:11:31,453 - weather - INFO - Weather service initialized with API key
+2025-06-14 19:11:31,461 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 19:11:32,108 - main - INFO - CNN model architecture defined.
+2025-06-14 19:11:32,108 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 19:11:32,130 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.111.67:5000
+2025-06-14 19:11:32,131 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-14 19:11:32,132 - werkzeug - INFO -  * Restarting with stat
+2025-06-14 19:11:36,225 - weather - INFO - Weather service initialized with API key
+2025-06-14 19:11:36,234 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 19:11:36,903 - main - INFO - CNN model architecture defined.
+2025-06-14 19:11:36,903 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 19:11:36,913 - werkzeug - WARNING -  * Debugger is active!
+2025-06-14 19:11:36,916 - werkzeug - INFO -  * Debugger PIN: 736-176-579
+2025-06-14 19:11:37,584 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 19:11:37] "GET / HTTP/1.1" 200 -
+2025-06-14 19:11:37,909 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 19:11:37] "[33mGET /api/agri-supplies HTTP/1.1[0m" 404 -
+2025-06-14 19:11:37,912 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 19:11:37] "[33mGET /api/weather?location=Hyderabad,%20Telangana,%20IN HTTP/1.1[0m" 404 -
+2025-06-14 19:11:37,945 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 19:11:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-14 19:11:56,066 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 19:11:56] "[33mPOST /api/voice-query HTTP/1.1[0m" 404 -
+2025-06-14 19:12:46,692 - werkzeug - INFO -  * Detected change in 'C:\\Users\\vuyyu\\OneDrive\\Desktop\\3-2 SUBJECTS\\CRT\\code\\soil_analysis_ai\\app.py', reloading
+2025-06-14 19:12:48,884 - werkzeug - INFO -  * Restarting with stat
+2025-06-14 19:12:57,307 - weather - INFO - Weather service initialized with API key
+2025-06-14 19:12:57,318 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 19:12:58,014 - main - INFO - CNN model architecture defined.
+2025-06-14 19:12:58,014 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 19:12:58,050 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.111.67:5000
+2025-06-14 19:12:58,051 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-14 19:12:58,052 - werkzeug - INFO -  * Restarting with stat
+2025-06-14 19:13:03,019 - weather - INFO - Weather service initialized with API key
+2025-06-14 19:13:03,031 - main - INFO - Simulating loading pre-trained soil analysis model...
+2025-06-14 19:13:03,747 - main - INFO - CNN model architecture defined.
+2025-06-14 19:13:03,747 - main - INFO - Dummy soil analysis model created (simulated load).
+2025-06-14 19:13:03,762 - werkzeug - WARNING -  * Debugger is active!
+2025-06-14 19:13:03,764 - werkzeug - INFO -  * Debugger PIN: 736-176-579
+2025-06-14 19:13:04,150 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 19:13:04] "GET / HTTP/1.1" 200 -
+2025-06-14 19:13:04,378 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 19:13:04] "[33mGET /api/weather?location=Hyderabad,%20Telangana,%20IN HTTP/1.1[0m" 404 -
+2025-06-14 19:13:04,386 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 19:13:04] "[33mGET /api/agri-supplies HTTP/1.1[0m" 404 -
+2025-06-14 19:13:22,661 - werkzeug - INFO - 127.0.0.1 - - [14/Jun/2025 19:13:22] "[33mPOST /api/voice-query HTTP/1.1[0m" 404 -
+2025-06-14 19:14:58,253 - werkzeug - INFO -  * Detected change in 'C:\\Users\\vuyyu\\OneDrive\\Desktop\\3-2 SUBJECTS\\CRT\\code\\soil_analysis_ai\\app.py', reloading
+2025-06-14 19:15:00,435 - werkzeug - INFO -  * Restarting with stat
