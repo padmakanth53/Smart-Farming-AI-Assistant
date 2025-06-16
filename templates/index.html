@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌱 Smart Farming AI Assistant</title>
+    <style>
+        /* Basic Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .card h2 {
+            color: #4a4a4a;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .card button {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .card button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            opacity: 0.9;
+        }
+
+        /* Weather Section Specifics */
+        .weather-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .weather-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #444;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 8px 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            width: 80%;
+            justify-content: center;
+        }
+
+        .weather-item i {
+            font-size: 1.5rem;
+            color: #667eea;
+        }
+
+        #weather-alerts {
+            margin-top: 15px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .alert-message {
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .alert-message.critical { background-color: #ffcccc; color: #cc0000; border: 1px solid #cc0000; }
+        .alert-message.warning { background-color: #fffacd; color: #b8860b; border: 1px solid #b8860b; }
+        .alert-message.info { background-color: #e0f2f7; color: #2196f3; border: 1px solid #2196f3; }
+        .alert-message.success { background-color: #e6ffe6; color: #4CAF50; border: 1px solid #4CAF50; }
+
+        .alert-message i {
+            font-size: 1.2em;
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 700px; /* Increased max-width for better display of images */
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+            color: #333;
+            max-height: 90vh; /* Ensure it fits on smaller screens */
+            overflow-y: auto; /* Allow scrolling within the modal if content is long */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .modal-content h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #4a4a4a;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .modal-content h4 { /* Added for subheadings */
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            color: #667eea;
+            text-align: left;
+            border-bottom: 1px dashed #e0e0e0;
+            padding-bottom: 5px;
+        }
+
+
+        .modal-content p, .modal-content ul {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .modal-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .modal-content ul li {
+            background-color: #f9f9f9;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #eee;
+            display: flex; /* For image + text layout */
+            align-items: center;
+            gap: 15px;
+            text-align: left;
+        }
+        .modal-content ul li strong {
+            color: #667eea;
+        }
+        .modal-content ul li img {
+            width: 80px; /* Smaller images in lists */
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            flex-shrink: 0; /* Prevent image from shrinking */
+        }
+        .modal-content ul li .item-details {
+            flex-grow: 1;
+        }
+        .modal-content ul li .item-description {
+            font-size: 0.9em;
+            color: #777;
+            margin-top: 5px;
+        }
+
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group select,
+        .form-group input[type="text"],
+        .form-group input[type="url"],
+        .form-group input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        /* --- NEW STYLES FOR DRAG & DROP / CAMERA INPUT --- */
+        .file-upload-area {
+            border: 2px dashed #a7b7e6; /* Dashed border for drag-and-drop */
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            background-color: #f0f4ff;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .file-upload-area.highlight {
+            background-color: #e0e8ff;
+            border-color: #667eea;
+        }
+
+        .file-upload-area i {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .file-upload-area p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        .file-upload-area p.small-text {
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        .file-upload-area input[type="file"] {
+            display: none; /* Hide the default file input */
+        }
+
+        .upload-button {
+            background: linear-gradient(90deg, #4CAF50, #8BC34A); /* Green button */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        .upload-button:hover {
+            opacity: 0.9;
+        }
+        /* --- END NEW STYLES --- */
+
+
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .modal-buttons button {
+            margin-top: 0;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Voice Assistant specific styles */
+        #voiceRecognitionResult {
+            margin-top: 15px;
+            font-style: italic;
+            color: #666;
+        }
+        #voiceResponse {
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #e6f7ff;
+            border-left: 5px solid #2196f3;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        #micButton {
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+        }
+        #micButton:hover {
+            background: linear-gradient(90deg, #8BC34A, #4CAF50);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                padding: 20px;
+            }
+            .card h2 {
+                font-size: 1.5rem;
+            }
+            .weather-item {
+                width: 95%;
+            }
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+            .modal-content h3 {
+                font-size: 1.6rem;
+            }
+            .modal-content h4 {
+                font-size: 1.2rem;
+            }
+            .file-upload-area p { /* Adjust font size for mobile */
+                font-size: 0.9rem;
+            }
+            .file-upload-area p.small-text {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🌱 Smart Farming AI Assistant</h1>
+            <p>Empowering farmers with intelligent insights for sustainable agriculture</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Weather Monitoring Card -->
+            <section class="card">
+                <h2><i class="fas fa-cloud-sun"></i> Weather Monitoring</h2>
+                <div class="weather-info">
+                    <div class="weather-item">
+                        <i class="fas fa-thermometer-half"></i> Temperature: <span id="temperature">N/A</span>
+                    </div>
+                    <div class="weather-item">
+                        <i class="fas fa-water"></i> Humidity: <span id="humidity">N/A</span>
+                    </div>
+                    <div class="weather-item">
+                        <i class="fas fa-wind"></i> Wind Speed: <span id="windSpeed">N/A</span>
+                    </div>
+                    <div class="weather-item">
+                        <i class="fas fa-cloud-showers-heavy"></i> Conditions: <span id="conditions">N/A</span>
+                    </div>
+                    <div class="weather-item">
+                        <i class="fas fa-umbrella"></i> Rainfall: <span id="rainfall">N/A</span>
+                    </div>
+                </div>
+                <h3>Weather Alerts</h3>
+                <div id="weather-alerts">
+                    <!-- Alerts will be injected here by JavaScript -->
+                    <p class="alert-message info"><i class="fas fa-info-circle"></i> Fetching weather data...</p>
+                </div>
+                <button onclick="fetchWeatherData()">Refresh Weather</button>
+            </section>
+
+            <!-- Soil Analysis Card -->
+            <section class="card">
+                <h2><i class="fas fa-leaf"></i> Soil Analysis</h2>
+                <p>Upload a soil image to analyze nutrient levels and pH.</p>
+                <button onclick="openModal('soilAnalysisModal')">Analyze Soil</button>
+            </section>
+
+            <!-- Pest Detection Card -->
+            <section class="card">
+                <h2><i class="fas fa-bug"></i> Pest & Disease Detection</h2>
+                <p>Upload a plant image for instant pest and disease identification.</p>
+                <button onclick="openModal('pestDetectionModal')">Detect Pest/Disease</button>
+            </section>
+
+            <!-- Voice Assistant Card -->
+            <section class="card">
+                <h2><i class="fas fa-microphone-alt"></i> Voice Assistant</h2>
+                <p>Ask any farming-related question using your voice!</p>
+                <button id="micButton" onclick="openModal('voiceAssistantModal')">Start Voice Query</button>
+            </section>
+
+            <!-- Water Management Card (Simulated) -->
+            <section class="card">
+                <h2><i class="fas fa-tint"></i> Water Level Monitoring</h2>
+                <p>Monitor soil moisture and water thresholds.</p>
+                <button onclick="fetchWaterThreshold()">Check Water Status</button>
+                <p id="waterStatus" style="margin-top: 15px; font-weight: bold;"></p>
+            </section>
+
+             <!-- Fertilizer & Pesticide Database Card -->
+            <section class="card">
+                <h2><i class="fas fa-seedling"></i> Agri-Supplies Database</h2>
+                <p>Find information on available fertilizers and pesticides.</p>
+                <button onclick="openModal('suppliesModal')">View Supplies</button>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Smart Farming AI Assistant. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Modals -->
+    <!-- Soil Analysis Modal -->
+    <div id="soilAnalysisModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('soilAnalysisModal')">&times;</span>
+            <h3>Soil Analysis</h3>
+            <div class="form-group">
+                <label for="soilImageUploadTrigger">Upload Soil Image:</label>
+                <div id="soilUploadArea" class="file-upload-area"
+                    ondragover="handleDragOver(event, 'soilUploadArea')"
+                    ondragleave="handleDragLeave(event, 'soilUploadArea')"
+                    ondrop="handleDrop(event, 'soilImageUpload')">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & Drop your soil image here</p>
+                    <p class="small-text">or</p>
+                    <button type="button" class="upload-button" onclick="document.getElementById('soilImageUpload').click()">
+                        <i class="fas fa-camera"></i> Capture or Select File
+                    </button>
+                    <input type="file" id="soilImageUpload" accept="image/*" capture="camera" onchange="displayFileName('soilImageUpload', 'soilFileNameDisplay')">
+                    <p class="small-text" id="soilFileNameDisplay"></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cropTypeSelect">Select Crop Type (for better recommendations):</label>
+                <select id="cropTypeSelect">
+                    <option value="general">General</option>
+                    <option value="rice">Rice</option>
+                    <option value="wheat">Wheat</option>
+                    <option value="maize">Maize</option>
+                    <option value="tomato">Tomato</option>
+                    <option value="cotton">Cotton</option>
+                </select>
+            </div>
+            <button onclick="submitSoilAnalysis()">Analyze</button>
+            <div class="loading-spinner" id="soilAnalysisSpinner"></div>
+            <div id="soilAnalysisResult" style="margin-top: 20px;"></div>
+            <!-- Added container for fertilizer recommendations, initially hidden -->
+            <div id="fertilizerRecommendationsSection" style="display: none;">
+                <h4>Recommended Fertilizers to improve nutrients:</h4>
+                <div id="soilFertilizerRecommendations"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pest Detection Modal -->
+    <div id="pestDetectionModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('pestDetectionModal')">&times;</span>
+            <h3>Pest & Disease Detection</h3>
+            <div class="form-group">
+                <label for="plantImageUploadTrigger">Upload Plant Image:</label>
+                <div id="plantUploadArea" class="file-upload-area"
+                    ondragover="handleDragOver(event, 'plantUploadArea')"
+                    ondragleave="handleDragLeave(event, 'plantUploadArea')"
+                    ondrop="handleDrop(event, 'plantImageUpload')">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & Drop your plant image here</p>
+                    <p class="small-text">or</p>
+                    <button type="button" class="upload-button" onclick="document.getElementById('plantImageUpload').click()">
+                        <i class="fas fa-camera"></i> Capture or Select File
+                    </button>
+                    <input type="file" id="plantImageUpload" accept="image/*" capture="camera" onchange="displayFileName('plantImageUpload', 'plantFileNameDisplay')">
+                    <p class="small-text" id="plantFileNameDisplay"></p>
+                </div>
+            </div>
+            <button onclick="submitPestDetection()">Detect</button>
+            <div class="loading-spinner" id="pestDetectionSpinner"></div>
+            <div id="pestDetectionResult" style="margin-top: 20px;"></div>
+        </div>
+    </div>
+
+    <!-- Voice Assistant Modal -->
+    <div id="voiceAssistantModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('voiceAssistantModal')">&times;</span>
+            <h3>Voice Assistant</h3>
+            <p>Click the microphone button and ask your farming question in your preferred language:</p>
+            <div class="form-group">
+                <label for="languageSelect">Select Language: (భాಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ)</label>
+                <select id="languageSelect">
+                    <option value="en">English (ಇಂಗ್ಲಿಷ್)</option>
+                    <option value="hi">Hindi (ಹಿಂದಿ)</option>
+                    <option value="ta">Tamil (ತಮಿಳು)</option>
+                    <option value="te">Telugu (ತೆಲುಗು)</option>
+                    <option value="kn">Kannada (ಕನ್ನಡ)</option>
+                    <option value="ml">Malayalam (ಮಲಯಾಳಂ)</option>
+                </select>
+            </div>
+            <button onclick="startVoiceRecognition()"><i class="fas fa-microphone"></i> Speak Now</button>
+            <div class="loading-spinner" id="voiceSpinner"></div>
+            <p id="voiceRecognitionResult" style="color: #4CAF50;"></p>
+            <p id="voiceResponse" style="margin-top: 10px;"></p>
+        </div>
+    </div>
+
+    <!-- Agri-Supplies Modal -->
+    <div id="suppliesModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('suppliesModal')">&times;</span>
+            <h3>Agri-Supplies Database</h3>
+            <p>Explore available fertilizers and pesticides. Click on an item for more details.</p>
+            <div class="form-group">
+                <label for="supplyCategory">Select Category:</label>
+                <select id="supplyCategory" onchange="filterSupplies()">
+                    <option value="all">All</option>
+                    <option value="ORGANIC">Organic Fertilizers</option>
+                    <option value="CHEMICAL">Chemical Fertilizers</option>
+                    <option value="PESTICIDES">Pesticides</option>
+                </select>
+            </div>
+            <div id="suppliesList">
+                <!-- Supplies will be loaded here -->
+            </div>
+            <button onclick="alert('This feature is under development. Farmers will be able to add custom supplies and local shop details soon!')">
+                <i class="fas fa-plus-circle"></i> Add New Supply
+            </button>
+        </div>
+    </div>
+
+
+    <script>
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            // Clear previous results when closing modal
+            if (modalId === 'soilAnalysisModal') {
+                document.getElementById('soilAnalysisResult').innerHTML = '';
+                document.getElementById('soilImageUpload').value = '';
+                document.getElementById('cropTypeSelect').value = 'general';
+                document.getElementById('fertilizerRecommendationsSection').style.display = 'none'; // Hide fertilizer section
+                document.getElementById('soilFertilizerRecommendations').innerHTML = ''; // Clear fertilizer list
+                document.getElementById('soilFileNameDisplay').textContent = ''; // Clear file name display
+            } else if (modalId === 'pestDetectionModal') {
+                document.getElementById('pestDetectionResult').innerHTML = '';
+                document.getElementById('plantImageUpload').value = '';
+                document.getElementById('plantFileNameDisplay').textContent = ''; // Clear file name display
+            } else if (modalId === 'voiceAssistantModal') {
+                document.getElementById('voiceRecognitionResult').textContent = '';
+                document.getElementById('voiceResponse').textContent = '';
+            }
+        }
+
+        // --- Drag and Drop / File Input Handling ---
+        function handleDragOver(event, elementId) {
+            event.preventDefault();
+            event.stopPropagation();
+            document.getElementById(elementId).classList.add('highlight');
+        }
+
+        function handleDragLeave(event, elementId) {
+            event.preventDefault();
+            event.stopPropagation();
+            document.getElementById(elementId).classList.remove('highlight');
+        }
+
+        function handleDrop(event, fileInputId) {
+            event.preventDefault();
+            event.stopPropagation();
+            document.getElementById(event.currentTarget.id).classList.remove('highlight');
+
+            const files = event.dataTransfer.files;
+            const fileInput = document.getElementById(fileInputId);
+            fileInput.files = files; // Assign dropped files to the file input
+            displayFileName(fileInputId, fileInputId === 'soilImageUpload' ? 'soilFileNameDisplay' : 'plantFileNameDisplay');
+        }
+
+        function displayFileName(fileInputId, displayElementId) {
+            const fileInput = document.getElementById(fileInputId);
+            const displayElement = document.getElementById(displayElementId);
+            if (fileInput.files.length > 0) {
+                displayElement.textContent = `Selected: ${fileInput.files[0].name}`;
+            } else {
+                displayElement.textContent = '';
+            }
+        }
+
+
+        // --- Weather Functionality ---
+        async function fetchWeatherData() {
+            const weatherAlertsDiv = document.getElementById('weather-alerts');
+            weatherAlertsDiv.innerHTML = '<p class="alert-message info"><i class="fas fa-info-circle"></i> Fetching weather data...</p>';
+
+            try {
+                // Changed default location to Hyderabad for consistency
+                const response = await fetch('/api/weather?location=Hyderabad, Telangana, IN');
+                const data = await response.json();
+
+                if (data.success) {
+                    const weather = data.data;
+                    document.getElementById('temperature').textContent = weather.temperature ? `${weather.temperature}°C` : 'N/A';
+                    document.getElementById('humidity').textContent = weather.humidity ? `${weather.humidity}%` : 'N/A';
+                    document.getElementById('windSpeed').textContent = weather.wind_speed ? `${weather.wind_speed.toFixed(1)} km/h` : 'N/A';
+                    document.getElementById('conditions').textContent = weather.conditions || 'N/A';
+                    document.getElementById('rainfall').textContent = weather.rainfall ? `${weather.rainfall.toFixed(1)} mm` : 'N/A';
+
+                    displayWeatherAlerts(data.alerts);
+                } else {
+                    weatherAlertsDiv.innerHTML = `<p class="alert-message error"><i class="fas fa-exclamation-triangle"></i> Error fetching weather: ${data.error || 'Unknown error'}</p>`;
+                }
+            } catch (error) {
+                console.error('Error fetching weather data:', error);
+                weatherAlertsDiv.innerHTML = `<p class="alert-message error"><i class="fas fa-exclamation-triangle"></i> Network error: Could not fetch weather data.</p>`;
+            }
+        }
+
+        function displayWeatherAlerts(alerts) {
+            const weatherAlertsDiv = document.getElementById('weather-alerts');
+            weatherAlertsDiv.innerHTML = ''; // Clear previous alerts
+
+            if (alerts && alerts.length > 0) {
+                alerts.forEach(alert => {
+                    const alertElement = document.createElement('p');
+                    alertElement.className = `alert-message ${alert.type}`;
+                    alertElement.innerHTML = `<i class="fas ${getAlertIconClass(alert.icon)}"></i> ${alert.message}`;
+                    weatherAlertsDiv.appendChild(alertElement);
+                });
+            } else {
+                weatherAlertsDiv.innerHTML = '<p class="alert-message success"><i class="fas fa-check-circle"></i> No active weather alerts. Conditions are favorable.</p>';
+            }
+        }
+
+        function getAlertIconClass(iconChar) {
+            const iconMap = {
+                '🌡️': 'fa-thermometer-half',
+                '❄️': 'fa-snowflake',
+                '🌧️': 'fa-cloud-showers-heavy',
+                '💨': 'fa-wind',
+                '💧': 'fa-tint',
+                '✅': 'fa-check-circle',
+                '⚠️': 'fa-exclamation-triangle',
+                '🔥': 'fa-fire',
+                '🥶': 'fa-temperature-low',
+                '🌪️': 'fa-wind',
+                ' inundaciones': 'fa-house-flood-water',
+                ' خشک': 'fa-sun',
+                '🌤️': 'fa-cloud-sun',
+                '❓': 'fa-question-circle',
+                'ℹ️': 'fa-info-circle'
+            };
+            return iconMap[iconChar] || 'fa-info-circle';
+        }
+
+        // --- Soil Analysis Functionality ---
+        async function submitSoilAnalysis() {
+            const fileInput = document.getElementById('soilImageUpload');
+            const cropType = document.getElementById('cropTypeSelect').value;
+            const spinner = document.getElementById('soilAnalysisSpinner');
+            const resultDiv = document.getElementById('soilAnalysisResult');
+            const fertilizerSection = document.getElementById('fertilizerRecommendationsSection');
+            const soilFertilizerRecommendations = document.getElementById('soilFertilizerRecommendations');
+
+
+            if (fileInput.files.length === 0) {
+                resultDiv.innerHTML = '<p style="color: red;">Please upload a soil image.</p>';
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('image', fileInput.files[0]);
+            formData.append('crop_type', cropType);
+
+            spinner.style.display = 'block';
+            resultDiv.innerHTML = '';
+            fertilizerSection.style.display = 'none'; // Hide fertilizer section initially
+            soilFertilizerRecommendations.innerHTML = '';
+
+
+            try {
+                const response = await fetch('/api/soil-analysis', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    const analysis = data.analysis;
+                    const recommendations = data.fertilizer_recommendations;
+
+                    let analysisHtml = '<h4>Soil Nutrient Details:</h4>';
+                    analysisHtml += `<ul>
+                        <li><strong>pH Level:</strong> ${analysis.ph_level}</li>
+                        <li><strong>Nitrogen (N):</strong> ${analysis.nitrogen} mg/kg</li>
+                        <li><strong>Phosphorus (P):</strong> ${analysis.phosphorus} mg/kg</li>
+                        <li><strong>Potassium (K):</strong> ${analysis.potassium} mg/kg</li>
+                        <li><strong>Organic Matter:</strong> ${analysis.organic_matter}%</li>
+                        <li><strong>Moisture:</strong> ${analysis.moisture}%</li>
+                        <li><strong>Soil Type:</strong> ${analysis.soil_type}</li>
+                    </ul>`;
+                    resultDiv.innerHTML = analysisHtml;
+
+                    // Display fertilizer recommendations after nutrient details
+                    if (recommendations && recommendations.length > 0) {
+                        let recHtml = '<ul>';
+                        recommendations.forEach(rec => {
+                            recHtml += `<li>
+                                <img src="${rec.image_url}" alt="${rec.name}" onerror="this.onerror=null;this.src='https://placehold.co/80x80?text=No+Image';" />
+                                <div class="item-details">
+                                    <strong>${rec.name}</strong><br>
+                                    Price: ${rec.price}<br>
+                                    Shop: ${rec.shop}<br>
+                                    Contact: ${rec.phone}
+                                    <div class="item-description">${rec.description || ''}</div>
+                                </div>
+                            </li>`;
+                        });
+                        recHtml += '</ul>';
+                        soilFertilizerRecommendations.innerHTML = recHtml;
+                        fertilizerSection.style.display = 'block'; // Show fertilizer section
+                    } else {
+                        soilFertilizerRecommendations.innerHTML = '<p>No specific fertilizer recommendations based on current analysis. Soil looks good!</p>';
+                        fertilizerSection.style.display = 'block';
+                    }
+
+                } else {
+                    resultDiv.innerHTML = `<p style="color: red;">Error: ${data.error}</p>`;
+                    fertilizerSection.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Error during soil analysis:', error);
+                resultDiv.innerHTML = '<p style="color: red;">An error occurred during analysis. Please try again.</p>';
+                fertilizerSection.style.display = 'none';
+            } finally {
+                spinner.style.display = 'none';
+            }
+        }
+
+        // --- Pest Detection Functionality ---
+        async function submitPestDetection() {
+            const fileInput = document.getElementById('plantImageUpload');
+            const spinner = document.getElementById('pestDetectionSpinner');
+            const resultDiv = document.getElementById('pestDetectionResult');
+
+            if (fileInput.files.length === 0) {
+                resultDiv.innerHTML = '<p style="color: red;">Please upload a plant image.</p>';
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('image', fileInput.files[0]);
+
+            spinner.style.display = 'block';
+            resultDiv.innerHTML = '';
+
+            try {
+                const response = await fetch('/api/pest-detection', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    const pestInfo = data.pest_info;
+                    const treatments = data.treatment_recommendations;
+
+                    let html = '<h4>Pest Detection Report:</h4>';
+                    html += `<ul>
+                        <li>
+                            <img src="${pestInfo.image_url}" alt="${pestInfo.name}" onerror="this.onerror=null;this.src='https://placehold.co/80x80?text=No+Image';" />
+                            <div class="item-details">
+                                <strong>Detected: ${pestInfo.name}</strong> (${pestInfo.scientific_name})<br>
+                                Severity: ${pestInfo.severity}<br>
+                                Confidence: ${(pestInfo.confidence * 100).toFixed(2)}%
+                                <div class="item-description">${pestInfo.description || ''}</div>
+                            </div>
+                        </li>
+                    </ul>`;
+
+                    html += '<h4>Treatment Recommendations:</h4>';
+                    if (treatments && treatments.length > 0) {
+                        html += '<ul>';
+                        treatments.forEach(treatment => {
+                            html += `<li>
+                                <img src="${treatment.image_url}" alt="${treatment.name}" onerror="this.onerror=null;this.src='https://placehold.co/80x80?text=No+Image';" />
+                                <div class="item-details">
+                                    <strong>${treatment.name}</strong> (${treatment.type})<br>
+                                    Dosage: ${treatment.dosage}<br>
+                                    Frequency: ${treatment.frequency}
+                                    <div class="item-description">${treatment.description || ''}</div>
+                                </div>
+                            </li>`;
+                        });
+                        html += '</ul>';
+                    } else {
+                        html += '<p>No specific treatment recommendations available for this pest.</p>';
+                    }
+                    resultDiv.innerHTML = html;
+                } else {
+                    resultDiv.innerHTML = `<p style="color: red;">Error: ${data.error}</p>`;
+                }
+            } catch (error) {
+                console.error('Error during pest detection:', error);
+                resultDiv.innerHTML = '<p style="color: red;">An error occurred during detection. Please try again.</p>';
+            } finally {
+                spinner.style.display = 'none';
+            }
+        }
+
+        // --- Voice Assistant Functionality ---
+        async function startVoiceRecognition() {
+            const resultDiv = document.getElementById('voiceRecognitionResult');
+            const responseDiv = document.getElementById('voiceResponse');
+            const spinner = document.getElementById('voiceSpinner');
+            const language = document.getElementById('languageSelect').value;
+
+            resultDiv.textContent = 'Listening... Speak now.';
+            responseDiv.textContent = '';
+            spinner.style.display = 'block';
+
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                resultDiv.textContent = 'Speech recognition not supported in this browser. Please use Chrome or a compatible browser.';
+                spinner.style.display = 'none';
+                return;
+            }
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition();
+            recognition.lang = language;
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            recognition.onresult = async (event) => {
+                const speechResult = event.results[0][0].transcript;
+                resultDiv.textContent = `You said: "${speechResult}"`;
+                spinner.style.display = 'block'; // Keep spinner active while fetching response
+
+                try {
+                    const response = await fetch('/api/voice-query', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ query: speechResult, language: language })
+                    });
+                    const data = await response.json();
+
+                    if (data.success) {
+                        responseDiv.textContent = `Assistant: ${data.response}`;
+                        // Optional: Text-to-speech for the response
+                        if ('speechSynthesis' in window) {
+                            const utterance = new SpeechSynthesisUtterance(data.response);
+                            utterance.lang = language;
+                            speechSynthesis.speak(utterance);
+                        }
+                    } else {
+                        responseDiv.textContent = `Assistant: Sorry, I couldn't process that. Error: ${data.error}`;
+                    }
+                } catch (error) {
+                    console.error('Error processing voice query:', error);
+                    responseDiv.textContent = 'Assistant: An error occurred. Please try again.';
+                } finally {
+                    spinner.style.display = 'none';
+                }
+            };
+
+            recognition.onerror = (event) => {
+                resultDiv.textContent = `Speech recognition error: ${event.error}`;
+                spinner.style.display = 'none';
+            };
+
+            recognition.onend = () => {
+                if (resultDiv.textContent === 'Listening... Speak now.') {
+                    resultDiv.textContent = 'No speech detected.';
+                    spinner.style.display = 'none';
+                }
+            };
+
+            recognition.start();
+        }
+
+        // --- Water Threshold Functionality ---
+        async function fetchWaterThreshold() {
+            const waterStatusDiv = document.getElementById('waterStatus');
+            waterStatusDiv.textContent = 'Checking water level...';
+            waterStatusDiv.style.color = '#555';
+
+            try {
+                const response = await fetch('/api/water-threshold');
+                const data = await response.json();
+
+                if (data.success) {
+                    waterStatusDiv.textContent = `Water Level: ${data.water_level}% - ${data.message}`;
+                    if (data.status === 'critical') {
+                        waterStatusDiv.style.color = 'red';
+                    } else if (data.status === 'warning') {
+                        waterStatusDiv.style.color = 'orange';
+                    } else {
+                        waterStatusDiv.style.color = 'green';
+                    }
+                } else {
+                    waterStatusDiv.textContent = `Error: ${data.error}`;
+                    waterStatusDiv.style.color = 'red';
+                }
+            } catch (error) {
+                console.error('Error fetching water threshold:', error);
+                waterStatusDiv.textContent = 'An error occurred while checking water level.';
+                waterStatusDiv.style.color = 'red';
+            }
+        }
+
+        // --- Agri-Supplies Functionality (Now fetching from API) ---
+        let FERTILIZER_DATABASE_FRONTEND = {}; // Will be populated from API
+
+        async function fetchSuppliesData() {
+            try {
+                const response = await fetch('/api/agri-supplies');
+                const data = await response.json();
+                if (response.ok) {
+                    FERTILIZER_DATABASE_FRONTEND = data;
+                    filterSupplies(); // Re-render supplies after fetching
+                } else {
+                    console.error('Error fetching supplies data:', data.error);
+                }
+            } catch (error) {
+                console.error('Network error fetching supplies data:', error);
+            }
+        }
+
+
+        function filterSupplies() {
+            const category = document.getElementById('supplyCategory').value;
+            const suppliesListDiv = document.getElementById('suppliesList');
+            suppliesListDiv.innerHTML = '';
+
+            let suppliesToDisplay = [];
+            if (category === 'all') {
+                for (const key in FERTILIZER_DATABASE_FRONTEND) {
+                    suppliesToDisplay = suppliesToDisplay.concat(FERTILIZER_DATABASE_FRONTEND[key]);
+                }
+            } else {
+                suppliesToDisplay = FERTILIZER_DATABASE_FRONTEND[category] || [];
+            }
+
+            if (suppliesToDisplay.length > 0) {
+                let html = '<ul>';
+                suppliesToDisplay.forEach(item => {
+                    html += `<li>
+                                <img src="${item.image_url}" alt="${item.name}" onerror="this.onerror=null;this.src='https://placehold.co/80x80?text=No+Image';" />
+                                <div class="item-details">
+                                    <strong>${item.name}</strong><br>
+                                    Price: ${item.price}<br>
+                                    Shop: ${item.shop}<br>
+                                    Contact: ${item.phone}
+                                    <div class="item-description">${item.description || ''}</div>
+                                </div>
+                            </li>`;
+                });
+                html += '</ul>';
+                suppliesListDiv.innerHTML = html;
+            } else {
+                suppliesListDiv.innerHTML = '<p>No supplies found for this category.</p>';
+            }
+        }
+
+
+        // Initial calls when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchWeatherData(); // Fetch weather on page load
+            setInterval(fetchWeatherData, 300000); // Refresh weather every 5 minutes (300,000 ms)
+            fetchSuppliesData(); // Load supplies data from API
+        });
+
+    </script>
+</body>
+</html>
